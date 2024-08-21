@@ -13,7 +13,6 @@
 
 1. Install Python Extension
 
-**Refer:**
 ![VSCode Python Extension](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/vscode-ext.png?raw=true)
 
 ## To build and run application
@@ -40,4 +39,4 @@ docker compose watch
 
 ### Get ALL
 
-![VSCode Python Extension](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/posts-ext.png?raw=true)
+![VSCode Python Extension](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/posts.png?raw=true)
