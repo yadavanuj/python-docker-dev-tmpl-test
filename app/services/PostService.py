@@ -35,3 +35,7 @@ class PostService:
             self.session.commit()
             return True
         return False
+    
+
+def create_post_service(session: Session) -> PostService:
+    return PostService(session=session)

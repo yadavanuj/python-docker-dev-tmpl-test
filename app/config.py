@@ -1,4 +1,5 @@
 import os
+import pathlib
 
 from typing import Any
 
@@ -10,6 +11,7 @@ from pydantic import (
 )
 from pydantic_core import MultiHostUrl
 from pydantic_settings import BaseSettings
+from app.common.logger import logger
 
 
 class Settings(BaseSettings):
@@ -19,6 +21,13 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str | None = None
     POSTGRES_PASSWORD_FILE: str | None = None
     POSTGRES_DB: str
+    GEMINI_KEY: str
+    HOST_NAME: str
+    SERVER_PORT: int = 8080
+
+    class Config:
+        env_file = f"{pathlib.Path(__file__).resolve().parent}/env.txt"
+    
 
     @model_validator(mode="before")
     @classmethod
@@ -49,5 +58,8 @@ class Settings(BaseSettings):
             port=self.POSTGRES_PORT,
             path=self.POSTGRES_DB,
         )
+
+logger.info("In Config")
+logger.info(pathlib.Path(__file__).resolve().parent)
 
 settings = Settings()

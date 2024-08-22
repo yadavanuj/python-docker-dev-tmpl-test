@@ -2,7 +2,7 @@ import logging
 from fastapi import APIRouter, Body, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.requests import Request
-from app.services import PostService
+from app.services.PostService import create_post_service
 from app.models import Post
 from sqlmodel import Session
 
@@ -21,7 +21,7 @@ def bind(engine: any):
     session = Session(bind=engine)
     # initialize post service
     global post_service 
-    post_service = PostService.PostService(session)
+    post_service = create_post_service(session)
 
 @router.post("/posts/")
 async def create_post(post: Post.Post):

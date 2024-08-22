@@ -15,6 +15,17 @@
 
 ![VSCode Python Extension](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/vscode-ext.png?raw=true)
 
+2. Create Gemini Key
+   [Google AI Studio](https://aistudio.google.com/app/apikey)
+
+3. Create environment file
+
+> Name: env.txt, must be placed next to main.py with below content
+
+![ENV](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/env.png?raw=true)
+
+> This file has been ignored in .gitignore
+
 ## To build and run application
 
 ```
@@ -35,8 +46,14 @@ docker compose watch
 
 ### Create - POST
 
-![VSCode Python Extension](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/post.png?raw=true)
+![Create Post](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/post.png?raw=true)
 
 ### Get ALL
 
-![VSCode Python Extension](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/posts.png?raw=true)
+![Get All Posts](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/posts.png?raw=true)
+
+## Bond AI, Ask API
+
+The new api integrates basic Google Gemini AI Bot. You can already start asking interesting questions like:
+
+![Ask API](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/ask.png?raw=true)
