@@ -101,4 +101,4 @@ The new api integrates basic Google Gemini AI Bot. You can already start asking 
 }
 ```
 
-> Response: Text Blog, need to be worked upon
+> Response: Text Blob, need to be worked upon
