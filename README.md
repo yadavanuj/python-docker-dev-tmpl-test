@@ -57,3 +57,48 @@ docker compose watch
 The new api integrates basic Google Gemini AI Bot. You can already start asking interesting questions like:
 
 ![Ask API](https://github.com/yadavanuj/bondAI-docker-dev-tmpl/blob/main/static/ask.png?raw=true)
+
+### Supported URLs
+
+-   Home aka Root (GET): [http://localhost:8000](http://localhost:8000)
+
+> Returns:
+
+```
+{"message": "Hello World!"}
+```
+
+-   Fetch All Posts (GET): [http://localhost:8000/posts](http://localhost:8000/posts)
+
+> Returns: Array of saved posts
+
+```
+[
+   {
+      "id": 1,
+      "post": "Text of saved post"
+   }
+]
+```
+
+-   Create Post (POST): [http://localhost:8000/api/v1/posts](http://localhost:8000/api/v1/posts)
+
+> Request:
+
+```
+{
+   "post": "Text of new post"
+}
+```
+
+-   Ask Gemini (POST): [http://localhost:8000/api/v1/ask](http://localhost:8000/api/v1/ask)
+
+> Request:
+
+```
+{
+   "post": "Explain Kafka"
+}
+```
+
+> Response: Text Blog, need to be worked upon
