@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 from app.config import settings
-from app.routes import PostRoutes, CuriousRoutes, SimpleRoutes
+from app.routes import PostRoutes, CuriousRoutes, SimpleRoutes, SimplePandasRoutes
 
 load_dotenv()  # take environment variables from .env.
 
@@ -44,5 +44,6 @@ PostRoutes.bind(sql_engine)
 app.include_router(PostRoutes.router, prefix="/api/v1", tags=["posts"])
 app.include_router(SimpleRoutes.router, prefix="/api/v1", tags=["second"])
 app.include_router(CuriousRoutes.router, prefix="/api/v1", tags=["asks"])
+app.include_router(SimplePandasRoutes.router, prefix="/api/v1", tags=["pandas"])
 
     
