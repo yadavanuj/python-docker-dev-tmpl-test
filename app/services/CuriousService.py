@@ -1,10 +1,13 @@
-import google.generativeai as genai
+from google import genai
 from app.config import settings
 
-
-genai.configure(api_key=str(settings.GEMINI_KEY))
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Configure the genai client with the API key
+client = genai.Client(api_key=str(settings.GEMINI_KEY))
 
 async def ask(que: str) -> str:
-    return model.generate_content(que).text
+    response = await client.aio.models.generate_content(
+        model="models/gemini-2.0-flash",
+        contents=que
+    )
+    return response.text or ''
 
