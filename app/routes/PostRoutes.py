@@ -1,5 +1,6 @@
 import logging
-from fastapi import APIRouter, Body, HTTPException
+from typing import Any
+from fastapi import APIRouter, Body, HTTPException, Response
 from fastapi.responses import JSONResponse
 from fastapi.requests import Request
 from app.services.PostService import create_post_service
@@ -16,11 +17,11 @@ router = APIRouter()
 post_service = None
 
 
-def bind(engine: any):
+def bind(engine: Any):
     # bind the engine to the session
     session = Session(bind=engine)
     # initialize post service
-    global post_service 
+    global post_service
     post_service = create_post_service(session)
 
 @router.post("/posts/")
@@ -52,4 +53,4 @@ async def update_post(id: int, post: str):
 async def delete_post(id: int):
     if not post_service.delete_post(id):
         raise HTTPException(status_code=404, detail="Post not found")
-    return JSONResponse(status_code=204)
+    return Response(status_code=204)
