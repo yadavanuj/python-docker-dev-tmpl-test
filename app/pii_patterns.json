@@ -1,0 +1,29 @@
+{
+  "patterns": [
+    {
+      "name": "Aadhar Card",
+      "regex": "\\d{12}",
+      "confidence": 0.8
+    },
+    {
+      "name": "PAN Card",
+      "regex": "[A-Z]{5}[0-9]{4}[A-Z]{1}",
+      "confidence": 0.9
+    },
+    {
+      "name": "Phone Number (India)",
+      "regex": "(?:\\+91)?[6-9]\\d{9}",
+      "confidence": 0.7
+    },
+    {
+      "name": "Email",
+      "regex": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+      "confidence": 0.8
+    },
+    {
+      "name": "Passport Number (India)",
+      "regex": "[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$",
+      "confidence": 0.9
+    }
+  ]
+}
