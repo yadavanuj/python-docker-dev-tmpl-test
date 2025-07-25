@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+
 @router.post("/ask/")
 async def ask(post: Post.Post):
     logger.info("Ask was: ")

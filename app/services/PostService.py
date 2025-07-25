@@ -2,6 +2,7 @@ from typing import List
 from sqlmodel import Session
 from app.models import Post
 
+
 class PostService:
     def __init__(self, session: Session):
         self.session = session

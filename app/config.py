@@ -27,22 +27,26 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = f"{pathlib.Path(__file__).resolve().parent}/env.txt"
-    
 
     @model_validator(mode="before")
     @classmethod
     def check_postgres_password(cls, data: Any) -> Any:
         if isinstance(data, dict):
-            if data.get("POSTGRES_PASSWORD_FILE") is None and data.get("POSTGRES_PASSWORD") is None:
-                raise ValueError("At least one of POSTGRES_PASSWORD_FILE and POSTGRES_PASSWORD must be set.")
+            if (
+                data.get("POSTGRES_PASSWORD_FILE") is None
+                and data.get("POSTGRES_PASSWORD") is None
+            ):
+                raise ValueError(
+                    "At least one of POSTGRES_PASSWORD_FILE and POSTGRES_PASSWORD must be set."
+                )
         return data
 
-    @validator('POSTGRES_PASSWORD_FILE', pre=True, always=True)
+    @validator("POSTGRES_PASSWORD_FILE", pre=True, always=True)
     def read_password_from_file(cls, v):
         if v is not None:
             file_path = v
             if os.path.exists(file_path):
-                with open(file_path, 'r') as file:
+                with open(file_path, "r") as file:
                     return file.read().strip()
             raise ValueError(f"Password file {file_path} does not exist.")
         return v
@@ -53,11 +57,14 @@ class Settings(BaseSettings):
         return MultiHostUrl.build(
             scheme="postgresql+psycopg",
             username=self.POSTGRES_USER,
-            password=self.POSTGRES_PASSWORD if self.POSTGRES_PASSWORD else self.POSTGRES_PASSWORD_FILE,
+            password=self.POSTGRES_PASSWORD
+            if self.POSTGRES_PASSWORD
+            else self.POSTGRES_PASSWORD_FILE,
             host=self.POSTGRES_SERVER,
             port=self.POSTGRES_PORT,
             path=self.POSTGRES_DB,
         )
+
 
 logger.info("In Config")
 logger.info(pathlib.Path(__file__).resolve().parent)

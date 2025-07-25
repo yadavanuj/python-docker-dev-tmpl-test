@@ -1,0 +1,15 @@
+name: Python Format Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  ruff-format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/ruff-action@v0
+        with:
+          args: "format --check --diff"
